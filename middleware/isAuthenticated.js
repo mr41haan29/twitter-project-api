@@ -19,8 +19,7 @@ export async function isAuthenticated(req, res, next) {
     const user = await User.findById(userId).select("-password");
 
     if (user) {
-      req.user = user; //remove this later
-      // res.status(200).send(user);
+      req.user = user;
       return next();
     } else {
       return res.status(400).json({ error: "user not found" });

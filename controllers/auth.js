@@ -127,7 +127,6 @@ export async function logout(req, res) {
   }
 }
 
-//remove this later
 export async function getMe(req, res) {
   try {
     const user = await User.findById(req.user._id).select("-password");

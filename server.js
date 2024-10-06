@@ -20,5 +20,5 @@ mongoose.connect(process.env.DATABASE_URL).then(() => {
 });
 
 app.get("/", (req, res) => {
-  res.send("yoo");
+  res.send("homepage");
 });
