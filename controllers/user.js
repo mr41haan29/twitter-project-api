@@ -172,4 +172,4 @@ export async function updateUserProfile(req, res) {
   }
 }
 
-export async function deleteUser(req, res) {}
+// export async function deleteUser(req, res) {}
