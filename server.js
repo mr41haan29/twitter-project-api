@@ -7,6 +7,7 @@ import { v2 as cloudinary } from "cloudinary";
 import authRoutes from "./routes/auth.js";
 import userRoutes from "./routes/user.js";
 import postRoutes from "./routes/post.js";
+import notificationRoutes from "./routes/notification.js";
 
 dotenv.config();
 cloudinary.config({
@@ -24,6 +25,7 @@ app.use(cookieParser());
 app.use("/api/auth", authRoutes);
 app.use("/api/users", userRoutes);
 app.use("/api/posts", postRoutes);
+app.use("/api/notifications", notificationRoutes);
 
 mongoose.connect(process.env.DATABASE_URL).then(() => {
   console.log("connected to DB");
