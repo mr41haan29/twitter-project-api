@@ -74,7 +74,7 @@ export async function login(req, res) {
     const existingUser = await User.findOne({ username: username });
 
     if (!existingUser) {
-      return res.status(400).json({ error: "user doesnt exist" });
+      return res.status(400).json({ error: "user not found" });
     }
 
     const isValidPassword = await bcrypt.compare(
@@ -121,7 +121,7 @@ export async function logout(req, res) {
       sameSite: "strict", //prevent CSRF attacks
     });
 
-    return res.status(200).json({ success: "user has logged out" });
+    return res.status(200).json({ message: "user has logged out" });
   } catch (error) {
     return res.status(500).json({ error });
   }
