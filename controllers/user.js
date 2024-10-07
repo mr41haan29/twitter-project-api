@@ -80,7 +80,7 @@ export async function followOrUnfollowUser(req, res) {
       await User.findByIdAndUpdate(req.user._id, { $pull: { following: id } });
 
       //TODO: return the id of the user as a response
-      res.status(200).json({
+      return res.status(200).json({
         message: `${currentUser.username} unfollowed ${userToFollow.username}`,
       });
     } else {
@@ -97,7 +97,7 @@ export async function followOrUnfollowUser(req, res) {
       });
 
       //TODO: return the id of the user as a response
-      res.status(200).json({
+      return res.status(200).json({
         message: `${currentUser.username} followed ${userToFollow.username}`,
       });
     }
@@ -145,9 +145,10 @@ export async function updateUserProfile(req, res) {
 
     //updating profile pic
     if (profileImage) {
-      if (user.profileImage) {
+      const imageURL = user.profileImage;
+      if (imageURL) {
         await cloudinary.uploader.destroy(
-          user.profileImage.split("/").pop().split(".")[0]
+          imageURL.split("/").pop().split(".")[0]
         );
       }
 
